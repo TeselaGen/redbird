@@ -1,6 +1,6 @@
 {
   "name": "tg-redbird",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "A reverse proxy with support for dynamic tables",
   "main": "index.js",
   "scripts": {
@@ -36,7 +36,6 @@
     "le-store-certbot": "^2.2.3",
     "lodash": "^4.17.15",
     "lru-cache": "^5.1.1",
-    "node-etcd": "^7.0.0",
     "object-hash": "^1.3.1",
     "pino": "^5.15.0",
     "safetimeout": "^0.1.2",

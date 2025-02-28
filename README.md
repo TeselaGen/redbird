@@ -274,33 +274,6 @@ docker(redbird).register("stable.api.com", 'company/api:v2.*');
 docker(redbird).register("preview.api.com", 'company/api:v[3-9].*');
 ```
 
-## etcd backend
-Redbird can use [node-etcd](https://github.com/stianeikeland/node-etcd) to automatically create proxy records from an etcd cluster. Configuration
-is accomplished by passing an array of [options](https://github.com/stianeikeland/node-etcd#constructor-options), plus the hosts and path variables,
-which define which etcd cluster hosts, and which directory within those hosts, that Redbird should poll for updates.
-
-```js
-var redbird = require('redbird')({
-  port:8080
-});
-
-var options = {
-  hosts: ['localhost:2379'], // REQUIRED - you must define array of cluster hosts
-	path: ['redbird'], // OPTIONAL - path to etcd keys
-	... // OPTIONAL - pass in node-etcd connection options
-}
-require('redbird').etcd(redbird,options);
-```
-etcd records can be created in one of two ways, either as a target destination pair:
-```/redbird/example.com			"8.8.8.8"```
-or by passing a JSON object containing multiple hosts, and Redbird options:
-```
-/redbird/derek.com				{ "hosts" : ["10.10.10.10", "11.11.11.11"]}
-/redbird/johnathan.com    { "ssl" : true }
-/redbird/jeff.com         { "docker" : "alpine/alpine:latest" }
-```
-
-
 ## Cluster support
 Redbird supports automatic node cluster generation. To use, just specify the number
 of processes that you want Redbird to use in the options object. Redbird will automatically
